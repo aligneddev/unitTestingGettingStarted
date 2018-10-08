@@ -10,7 +10,7 @@ Master branch is the base starting point.
 
 The prep branch is my practice and preparation for the talk.
 
-## Getting started
+## Getting started - create the projects in master
 
 * `dotnet new -i aspnetcore-vuejs`
   * [latest Vue template](https://github.com/MarkPieszak/AspNETCore-Vue-starter)
@@ -18,3 +18,6 @@ The prep branch is my practice and preparation for the talk.
 * in the source/web/tests directory `dotnet new mstest`
 * in the source/api directory `dotnet new webapi`
 * in the source/api/tests directory `dotnet new mstest`
+
+
+## 
