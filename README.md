@@ -15,9 +15,8 @@ The prep branch is my practice and preparation for the talk.
 * `dotnet new -i aspnetcore-vuejs`
   * [latest Vue template](https://github.com/MarkPieszak/AspNETCore-Vue-starter)
 * in the source/web directory `dotnet new vuejs`
-* in the source/web/tests directory `dotnet new mstest`
+* in the source/web/web.tests directory `dotnet new mstest -n web.tests`
 * in the source/api directory `dotnet new webapi`
-* in the source/api/tests directory `dotnet new mstest`
-
+* in the source/api/api.tests directory `dotnet new mstest -n api.tests`
 
 ## 

@@ -5730,11 +5730,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\git\\blog\\unitTestingGettingStarted\\source\\api\\tests\\tests.csproj",
-      "projectName": "tests",
-      "projectPath": "c:\\git\\blog\\unitTestingGettingStarted\\source\\api\\tests\\tests.csproj",
+      "projectUniqueName": "c:\\git\\blog\\unitTestingGettingStarted\\source\\web.tests\\web.tests\\web.tests.csproj",
+      "projectName": "web.tests",
+      "projectPath": "c:\\git\\blog\\unitTestingGettingStarted\\source\\web.tests\\web.tests\\web.tests.csproj",
       "packagesPath": "C:\\Users\\klogan\\.nuget\\packages\\",
-      "outputPath": "c:\\git\\blog\\unitTestingGettingStarted\\source\\api\\tests\\obj\\",
+      "outputPath": "c:\\git\\blog\\unitTestingGettingStarted\\source\\web.tests\\web.tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
