@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace Api.Weather
@@ -17,7 +18,9 @@ namespace Api.Weather
         public ApixuClient(HttpClient httpClient)
         {
             httpClient.BaseAddress = new Uri($"https://api.apixu.com/v1/current.json?key={key}");
-            httpClient.DefaultRequestHeaders.Add("Content-Type", "application/json; charset=utf-8");
+            httpClient.DefaultRequestHeaders
+              .Accept
+              .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _client = httpClient;
         }
 

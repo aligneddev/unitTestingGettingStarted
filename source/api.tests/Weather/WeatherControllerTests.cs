@@ -10,17 +10,17 @@ namespace Api.Tests.Weather
     [TestCategory(TestCategories.WeatherAPI)]
     public class WeatherControllerTests
     {
-        private (WeatherController weatherController, Mock<IWeatherProvider> weatherProvider) Factory()
+        private (WeatherController weatherController, Mock<IGetWeatherHttpClient> getWeatherHttpClient) Factory()
         {
-            var weatherProvider = new Mock<IWeatherProvider>();
-            return (new WeatherController(weatherProvider.Object), weatherProvider);
+            var getWeatherHttpClient = new Mock<IGetWeatherHttpClient>();
+            return (new WeatherController(getWeatherHttpClient.Object), getWeatherHttpClient);
         }
 
         [TestMethod]
         public async Task WeatherController_GetTemp_NoZipCode_Returns400()
         {
             // Arrange
-            var (weatherController, weatherProvider) = Factory();
+            var (weatherController, getWeatherHttpClient) = Factory();
 
             // Act
             var result = await weatherController.GetTempForZipAsync(0);
@@ -39,11 +39,11 @@ namespace Api.Tests.Weather
             */
             // Arrange
             var zipCode = 57105;
-            var (weatherController, weatherProvider) = Factory();
+            var (weatherController, getWeatherHttpClient) = Factory();
 
             // fake the return from weather provider with MOQ
             var fakeTemp = 72.6;
-            weatherProvider.Setup(wp => wp.GetTempForZipAsync(zipCode))
+            getWeatherHttpClient.Setup(wp => wp.GetCurrentTemp(zipCode))
                 .ReturnsAsync(fakeTemp);
 
             // Act

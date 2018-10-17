@@ -6,11 +6,11 @@ namespace Api.Weather
     [Route("api/[controller]")]
     public class WeatherController : Controller
     {
-        private readonly IWeatherProvider weatherProvider;
+        private readonly IGetWeatherHttpClient weatherHttpClient;
 
-        public WeatherController(IWeatherProvider weatherProvider)
+        public WeatherController(IGetWeatherHttpClient weatherHttpClient)
         {
-            this.weatherProvider = weatherProvider;
+            this.weatherHttpClient = weatherHttpClient;
         }
 
         [HttpGet("[action]")]
@@ -21,7 +21,7 @@ namespace Api.Weather
                 return BadRequest($"{nameof(zip)} cannot be 0");
             }
 
-            var result = await weatherProvider.GetTempForZipAsync(zip);
+            var result = await weatherHttpClient.GetCurrentTemp(zip);
             return Ok(result);
         }
     }
