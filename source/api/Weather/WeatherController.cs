@@ -21,7 +21,7 @@ namespace Api.Weather
                 return BadRequest($"{nameof(zip)} cannot be 0");
             }
 
-            var result = await weatherProvider.GetTempForZip(zip);
+            var result = await weatherProvider.GetTempForZipAsync(zip);
             return Ok(result);
         }
     }

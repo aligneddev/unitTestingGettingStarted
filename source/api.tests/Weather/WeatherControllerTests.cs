@@ -4,13 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Threading.Tasks;
 
-namespace Api.Tests
+namespace Api.Tests.Weather
 {
     [TestClass]
     [TestCategory(TestCategories.WeatherAPI)]
     public class WeatherControllerTests
     {
-
         private (WeatherController weatherController, Mock<IWeatherProvider> weatherProvider) Factory()
         {
             var weatherProvider = new Mock<IWeatherProvider>();
@@ -33,13 +32,18 @@ namespace Api.Tests
         [TestMethod]
         public async Task WeatherController_GetTemp_ZipCode_CallsProviderWithZipCode()
         {
+            /**
+             * Given an API call
+            * When asking for current temp
+            * Then it calls the weather Api with the correct zip code 
+            */
             // Arrange
             var zipCode = 57105;
             var (weatherController, weatherProvider) = Factory();
 
             // fake the return from weather provider with MOQ
             var fakeTemp = 72.6;
-            weatherProvider.Setup(wp => wp.GetTempForZip(zipCode))
+            weatherProvider.Setup(wp => wp.GetTempForZipAsync(zipCode))
                 .ReturnsAsync(fakeTemp);
 
             // Act
@@ -48,11 +52,5 @@ namespace Api.Tests
             // Assert
             Assert.AreEqual(fakeTemp, (response.Result as OkObjectResult).Value);
         }
-
-        /**
-         * Given an API call
-        * When asking for current temp
-        * Then it calls the weather Api with the correct zip code 
-        */
     }
 }

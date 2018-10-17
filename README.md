@@ -23,6 +23,12 @@ Master branch is the up-to-date version.
 * EF Core - may just be mocked data for now
 * VueJs
 
+## Branches
+
+* master - has the latest running code
+* emptyStart - after running the commands above with a few tweaks
+* apiHttpCall - creating the API tests, merged to master
+
 ## "Business" Goals
 
 Provide a way to track biking miles for purposes of reporting.
@@ -100,6 +106,3 @@ Examples
 ?? any needed with SPA approach??
 [my article on "classic" MVC testing](https://www.aligneddev.net/blog/2018/unit-test-mvc/)
 
-## Prep branch
-
-My practice and preparation for the talk
