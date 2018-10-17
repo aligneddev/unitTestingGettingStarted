@@ -1,25 +1,29 @@
 # Getting started with unit testing
 
-Example code for https://www.aligneddev.net/blog/2018/getting-started-with-unit-testing/ and SD Code Camp 2018
+Example code for [my aligneddev.net article](https://www.aligneddev.net/blog/2018/getting-started-with-unit-testing/) and [SD Code Camp 2018](https://www.aligneddev.net/blog/2018/getting-started-with-unit-testing-presention-version/).
 
-How do you start writing unit tests?
+## How do you start writing unit tests?
 
 I hope to show an example at my presentation and people will walk out thinking "I can do that".
 
-Master branch is the base starting point.
-
-The prep branch is my practice and preparation for the talk.
+Master branch is the up-to-date version.
 
 ## Getting started - create the projects in master
 
+* Get the [latest Vue template](https://github.com/MarkPieszak/AspNETCore-Vue-starter) before starting.
 * `dotnet new -i aspnetcore-vuejs`
-  * [latest Vue template](https://github.com/MarkPieszak/AspNETCore-Vue-starter)
 * in the source/web directory `dotnet new vuejs -n Web`
 * in the source/web/web.tests directory `dotnet new mstest -n Web.Tests`
 * in the source/api directory `dotnet new webapi -n Api`
 * in the source/api/api.tests directory `dotnet new mstest -n Api.Tests`
 
-## Business Goals
+## Tech Used
+
+* Asp.Net MVC Core
+* EF Core - may just be mocked data for now
+* VueJs
+
+## "Business" Goals
 
 Provide a way to track biking miles for purposes of reporting.
 
@@ -28,11 +32,13 @@ Provide a way to track biking miles for purposes of reporting.
 
 I currently have a Google Spreadsheet that I use to track all of this and see this as an opportunity to write some fun code.
 
-For the purposes of this talk sample code, we'll keep it simple
+For the purposes of this talk sample code, we'll keep it simple and not all the functionality will be implemented at this time.
 
 ## Models
 
-### NewRide
+### RideInfo
+
+The ride information to save and returns. Mirrors the DB structure with EF Core.
 
 ## Scenarios/Specs that my "business" needs
 
@@ -94,8 +100,6 @@ Examples
 ?? any needed with SPA approach??
 [my article on "classic" MVC testing](https://www.aligneddev.net/blog/2018/unit-test-mvc/)
 
-
 ## Prep branch
 
 My practice and preparation for the talk
-
