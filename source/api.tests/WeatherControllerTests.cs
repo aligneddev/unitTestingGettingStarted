@@ -21,10 +21,10 @@ namespace Api.Tests
         public void WeatherController_GetTemp_NoZipCode_Returns400()
         {
             // Arrange
-            var returnedMocks = Factory();
+            var (weatherController, weatherProvider) = Factory();
 
             // Act
-            var result = returnedMocks.weatherController.GetTempForZip(0);
+            var result = weatherController.GetTempForZip(0);
 
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
