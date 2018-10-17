@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web", "web.csproj", "{22A75561-3942-45EE-AD24-6FBEEDADE487}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web", "web\web.csproj", "{22A75561-3942-45EE-AD24-6FBEEDADE487}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.tests", "..\web.tests\web.tests.csproj", "{353863FC-4D1C-4C6A-B1F5-91C1F2E6965C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web.tests", "web.tests\web.tests.csproj", "{353863FC-4D1C-4C6A-B1F5-91C1F2E6965C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api", "..\api\api.csproj", "{60AF97CF-D0B0-4AB3-98D7-9863EC49BFAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api", "api\api.csproj", "{60AF97CF-D0B0-4AB3-98D7-9863EC49BFAB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api.tests", "..\api.tests\api.tests.csproj", "{C653DA8B-3ED3-4DDC-96E2-B0FFC5350C33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "api.tests", "api.tests\api.tests.csproj", "{C653DA8B-3ED3-4DDC-96E2-B0FFC5350C33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

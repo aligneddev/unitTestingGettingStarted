@@ -2,6 +2,6 @@ namespace Api.Tests
 {
     internal class TestCategories
     {
-        public static string WeatherAPI = "Weather - API";
+        public const string WeatherAPI = "Weather - API";
     }
 }

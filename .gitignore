@@ -251,3 +251,6 @@ _Pvt_Extensions
 .fake/
 
 .vscode/
+
+
+source/api/obj/**/*.*
