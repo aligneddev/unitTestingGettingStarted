@@ -14,14 +14,14 @@ namespace Api.Weather
         }
 
         [HttpGet("[action]")]
-        public ActionResult<int> GetTempForZip([FromQuery(Name = "zip")] int zip)
+        public ActionResult<double> GetTempForZipAsync([FromQuery(Name = "zip")] int zip)
         {
             if (zip == 0)
             {
                 return BadRequest($"{nameof(zip)} cannot be 0");
             }
 
-            var result = 60;
+            var result = 72.6;//  await weatherProvider.GetTempForZip(zip);
             return Ok(result);
         }
     }

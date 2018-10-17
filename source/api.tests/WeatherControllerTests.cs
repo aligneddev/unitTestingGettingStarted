@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System.Threading.Tasks;
 
 namespace Api.Tests
 {
@@ -23,10 +24,29 @@ namespace Api.Tests
             var (weatherController, weatherProvider) = Factory();
 
             // Act
-            var result = weatherController.GetTempForZip(0);
+            var result = weatherController.GetTempForZipAsync(0);
 
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
+        }
+
+        [TestMethod]
+        public void WeatherController_GetTemp_ZipCode_ReturnsTemp()
+        {
+            // Arrange
+            var zipCode = 57105;
+            var (weatherController, weatherProvider) = Factory();
+
+            // fake the return from weather provider with MOQ
+            var fakeTemp = 72.6;
+            //weatherProvider.Setup(wp => wp.GetTempForZip(zipCode))
+            //    .ReturnsAsync(fakeTemp);
+
+            // Act
+            var response = weatherController.GetTempForZipAsync(zipCode);
+
+            // Assert
+            Assert.AreEqual(fakeTemp, (response.Result as OkObjectResult).Value);
         }
 
         /**
