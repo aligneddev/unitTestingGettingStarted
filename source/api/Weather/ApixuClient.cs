@@ -12,12 +12,12 @@ namespace Api.Weather
 
     public class ApixuClient : IGetWeatherHttpClient
     {
+        public static string apiKey = "45d659c3bbb64b06ad4172120181710";
         private readonly HttpClient _client;
-        private static string key = "45d659c3bbb64b06ad4172120181710";
 
         public ApixuClient(HttpClient httpClient)
         {
-            httpClient.BaseAddress = new Uri($"https://api.apixu.com/v1/current.json?key={key}");
+            httpClient.BaseAddress = new Uri($"https://api.apixu.com/v1/");
             httpClient.DefaultRequestHeaders
               .Accept
               .Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -26,7 +26,7 @@ namespace Api.Weather
 
         public async Task<double> GetCurrentTemp(int zipCode)
         {
-            var response = await _client.GetStringAsync($"&q={zipCode}");
+            var response = await _client.GetStringAsync($"current.json?key={apiKey}&q={zipCode}");
             var weather = ApiuxWeatherResponse.FromJson(response);
             return weather.Current.TempF;
         }

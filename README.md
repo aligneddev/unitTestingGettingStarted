@@ -50,6 +50,14 @@ The ride information to save and returns. Mirrors the DB structure with EF Core.
 
 ### API
 
+> used in my presentation
+
+-- get current temp to fill in ride info
+Given an API call
+When asking for current temp
+Then it calls the weather Api with the correct zip code
+
+
 Given a new ride is submitted
 When missing values (invalid)
 Then it should return a 503 with a invalid message
@@ -62,11 +70,6 @@ Then it should persist to the data store with those values
 
 Examples
 
-Given an API call
-When asking for current temp
-Then it calls the weather Api with the correct zip code
-
-Examples
 
 ### Web
 
