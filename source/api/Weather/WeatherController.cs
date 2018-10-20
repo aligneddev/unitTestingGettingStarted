@@ -15,23 +15,23 @@ namespace Api.Weather
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<int>> GetCurrentTempForZipAsync([FromQuery(Name = "zip")] int zip)
+        public async Task<ActionResult<int>> GetCurrentTempForZipAsync([FromQuery(Name = "zipcode")] int zipCode)
         {
-            if (zip == 0)
+            if (zipCode == 0)
             {
-                return BadRequest($"{nameof(zip)} cannot be 0");
+                return BadRequest($"{nameof(zipCode)} cannot be 0");
             }
 
-            var result = await weatherHttpClient.GetCurrentTempAsync(zip);
+            var result = await weatherHttpClient.GetCurrentTempAsync(zipCode);
             return Ok(result);
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<ApiuxWeatherCurrent>> GetPastWeatherAsync([FromQuery(Name = "zip")] int zip, [FromQuery(Name = "dateTime")] string dateTime)
+        public async Task<ActionResult<ApiuxWeatherCurrent>> GetPastWeatherAsync([FromQuery(Name = "zipcode")] int zipCode, [FromQuery(Name = "dateTime")] string dateTime)
         {
-            if(zip == 0)
+            if(zipCode == 0)
             {
-                return BadRequest($"{nameof(zip)} cannot be 0");
+                return BadRequest($"{nameof(zipCode)} cannot be 0");
             }
 
             if (string.IsNullOrWhiteSpace(dateTime) || !DateTime.TryParse(dateTime, out var parsedDateTime))
@@ -39,7 +39,7 @@ namespace Api.Weather
                 return BadRequest($"{nameof(dateTime)} must be a valid date");
             }
 
-            var weather = await weatherHttpClient.GetPastWeatherAsync(zip, parsedDateTime);
+            var weather = await weatherHttpClient.GetPastWeatherAsync(zipCode, parsedDateTime);
             return weather.Current;
         }
 
