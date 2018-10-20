@@ -24,7 +24,7 @@ namespace Api.Tests.Weather
             var (weatherController, getWeatherHttpClient) = Factory();
 
             // Act
-            var result = await weatherController.GetCurrentTempForZipAsync(0);
+            var result = await weatherController.CurrentTemp(0);
 
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
@@ -48,7 +48,7 @@ namespace Api.Tests.Weather
                 .ReturnsAsync(fakeTemp);
 
             // Act
-            var response = await weatherController.GetCurrentTempForZipAsync(zipCode);
+            var response = await weatherController.CurrentTemp(zipCode);
 
             // Assert
             getWeatherHttpClient.Verify(w => w.GetCurrentTempAsync(zipCode), Times.Once);
@@ -61,7 +61,7 @@ namespace Api.Tests.Weather
             var (weatherController, getWeatherHttpClient) = Factory();
 
             // Act
-            var result = await weatherController.GetCurrentTempForZipAsync(0);
+            var result = await weatherController.CurrentTemp(0);
 
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
@@ -74,7 +74,7 @@ namespace Api.Tests.Weather
             var (weatherController, getWeatherHttpClient) = Factory();
 
             // Act
-            var result = await weatherController.GetPastWeatherAsync(0, string.Empty);
+            var result = await weatherController.PastWeather(0, string.Empty);
 
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
@@ -89,7 +89,7 @@ namespace Api.Tests.Weather
             var (weatherController, getWeatherHttpClient) = Factory();
 
             // Act
-            var result = await weatherController.GetPastWeatherAsync(59785, string.Empty);
+            var result = await weatherController.PastWeather(59785, string.Empty);
 
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
@@ -122,7 +122,7 @@ namespace Api.Tests.Weather
                 .ReturnsAsync(fakeResponse);
 
             // Act
-            var result = await weatherController.GetPastWeatherAsync(zipCode, date.ToString());
+            var result = await weatherController.PastWeather(zipCode, date.ToString());
 
             // Assert
             getWeatherHttpClient.Verify(w => w.GetPastWeatherAsync(zipCode,
