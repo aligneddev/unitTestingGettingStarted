@@ -33,7 +33,7 @@ namespace Api.Tests.Weather
             const double fakeTemp = 70.5;
             var response = new ApiuxWeatherCurrentResponse
             {
-                Current = new Current
+                Current = new ApiuxWeatherCurrent
                 {
                     TempF = fakeTemp
                 }
@@ -43,7 +43,7 @@ namespace Api.Tests.Weather
                     .Respond("application/json", Serialize.ToJson(response));
 
             // Act
-            var result = await apiuxClient.GetCurrentTemp(zipCode);
+            var result = await apiuxClient.GetCurrentTempAsync(zipCode);
 
             // Assert
             Assert.AreEqual(fakeTemp, result);
@@ -58,7 +58,7 @@ namespace Api.Tests.Weather
             const double fakeTemp = 70.5;
             var response = new ApiuxWeatherCurrentResponse
             {
-                Current = new Current
+                Current = new ApiuxWeatherCurrent
                 {
                     TempF = fakeTemp
                 }
@@ -69,7 +69,7 @@ namespace Api.Tests.Weather
 
             
             // Act
-            var result = await apiuxClient.GetCurrentTemp(zipCode);
+            var result = await apiuxClient.GetCurrentTempAsync(zipCode);
 
             // Assert
             Assert.AreEqual(1, mockHttp.GetMatchCount(request));

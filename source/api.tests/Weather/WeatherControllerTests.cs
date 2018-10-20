@@ -44,14 +44,14 @@ namespace Api.Tests.Weather
 
             // fake the return from weather provider with MOQ
             var fakeTemp = 72.6;
-            getWeatherHttpClient.Setup(wp => wp.GetCurrentTemp(zipCode))
+            getWeatherHttpClient.Setup(wp => wp.GetCurrentTempAsync(zipCode))
                 .ReturnsAsync(fakeTemp);
 
             // Act
             var response = await weatherController.GetCurrentTempForZipAsync(zipCode);
 
             // Assert
-            Assert.AreEqual(fakeTemp, (response.Result as OkObjectResult).Value);
+            getWeatherHttpClient.Verify(w => w.GetCurrentTempAsync(zipCode), Times.Once);
         }
 
         [TestMethod]
@@ -74,20 +74,22 @@ namespace Api.Tests.Weather
             var (weatherController, getWeatherHttpClient) = Factory();
 
             // Act
-            var result = await weatherController.GetPastTempForZipAsync(0, string.Empty);
+            var result = await weatherController.GetPastWeatherAsync(0, string.Empty);
 
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
         }
 
         [TestMethod]
-        public async Task WeatherController_GetPastTemp_NoDateTime_Returns400()
+        [DataRow("")]
+        [DataRow("00-1-2 10:00:00")]
+        public async Task WeatherController_GetPastTemp_NoDateTimeOrInvalid_Returns400(string dateTime)
         {
             // Arrange
             var (weatherController, getWeatherHttpClient) = Factory();
 
             // Act
-            var result = await weatherController.GetPastTempForZipAsync(59785, string.Empty);
+            var result = await weatherController.GetPastWeatherAsync(59785, string.Empty);
 
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
@@ -108,21 +110,29 @@ namespace Api.Tests.Weather
 
             // fake the return from weather provider with MOQ
             var fakeTemp = 72.6;
-            var response = new ApiuxWeatherCurrentResponse
+            var fakeResponse = new ApiuxWeatherCurrentResponse
             {
-                Current = new Current
+                Current = new ApiuxWeatherCurrent
                 {
                     TempF = fakeTemp
                 }
             };
-            getWeatherHttpClient.Setup(wp => wp.GetPastWeather(zipCode, date))
-                .ReturnsAsync(response);
+            getWeatherHttpClient.Setup(wp => wp.GetPastWeatherAsync(It.IsAny<int>(), It.IsAny<DateTime>()))
+                //It.Is<DateTime>(d => d.ToString() == date.ToString())))
+                .ReturnsAsync(fakeResponse);
 
             // Act
-            var response = await weatherController.GetPastTempForZipAsync(zipCode, date);
+            var result = await weatherController.GetPastWeatherAsync(zipCode, date.ToString());
 
             // Assert
-            Assert.AreEqual(fakeTemp, (response.Result as OkObjectResult).Value);
+            getWeatherHttpClient.Verify(w => w.GetPastWeatherAsync(zipCode,
+                // needs to use It.Is straight date doesn't match
+                It.Is<DateTime>(d => d.ToString() == date.ToString())),
+                Times.Once);
+
+            // this really only tests the MOQ
+            //var weatherResult = ApiuxWeatherCurrentResponse.FromJson((result.Result as OkObjectResult).Value as string);
+            //Assert.AreEqual(fakeResponse.Current.TempF, weatherResult.Current.TempF);
         }
     }
 }

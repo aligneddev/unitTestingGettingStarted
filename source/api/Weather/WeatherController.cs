@@ -22,12 +22,12 @@ namespace Api.Weather
                 return BadRequest($"{nameof(zip)} cannot be 0");
             }
 
-            var result = await weatherHttpClient.GetCurrentTemp(zip);
+            var result = await weatherHttpClient.GetCurrentTempAsync(zip);
             return Ok(result);
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<int>> GetPastTempForZipAsync([FromQuery(Name = "zip")] int zip, [FromQuery(Name = "dateTime")] string dateTime)
+        public async Task<ActionResult<ApiuxWeatherCurrent>> GetPastWeatherAsync([FromQuery(Name = "zip")] int zip, [FromQuery(Name = "dateTime")] string dateTime)
         {
             if(zip == 0)
             {
@@ -39,9 +39,8 @@ namespace Api.Weather
                 return BadRequest($"{nameof(dateTime)} must be a valid date");
             }
 
-            var weather = await weatherHttpClient.GetPastWeather(zip, parsedDateTime);
-
-            return weather
+            var weather = await weatherHttpClient.GetPastWeatherAsync(zip, parsedDateTime);
+            return weather.Current;
         }
 
     }

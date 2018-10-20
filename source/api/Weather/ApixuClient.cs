@@ -7,8 +7,8 @@ namespace Api.Weather
 {
     public interface IGetWeatherHttpClient
     {
-        Task<double> GetCurrentTemp(int zipCode);
-        Task<ApiuxWeatherCurrentResponse> GetPastWeather(int zip, DateTime dateTime);
+        Task<double> GetCurrentTempAsync(int zipCode);
+        Task<ApiuxWeatherCurrentResponse> GetPastWeatherAsync(int zip, DateTime dateTime);
     }
 
     public class ApixuClient : IGetWeatherHttpClient
@@ -25,14 +25,14 @@ namespace Api.Weather
             this.httpClient = httpClient;
         }
 
-        public async Task<double> GetCurrentTemp(int zipCode)
+        public async Task<double> GetCurrentTempAsync(int zipCode)
         {
             var response = await httpClient.GetStringAsync($"current.json?key={apiKey}&q={zipCode}");
             var weather = ApiuxWeatherCurrentResponse.FromJson(response);
             return weather.Current.TempF;
         }
 
-        public async Task<ApiuxWeatherCurrentResponse> GetPastWeather(int zipCode, DateTime dateTime)
+        public async Task<ApiuxWeatherCurrentResponse> GetPastWeatherAsync(int zipCode, DateTime dateTime)
         {
             var response = await httpClient.GetStringAsync($"past.json?key={apiKey}&q={zipCode}&date={dateTime}");
             return ApiuxWeatherCurrentResponse.FromJson(response);

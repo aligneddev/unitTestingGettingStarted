@@ -10,10 +10,10 @@ namespace Api.Weather
         public Location Location { get; set; }
 
         [JsonProperty("current")]
-        public Current Current { get; set; }
+        public ApiuxWeatherCurrent Current { get; set; }
     }
 
-    public partial class Current
+    public partial class ApiuxWeatherCurrent
     {
         [JsonProperty("last_updated_epoch")]
         public long LastUpdatedEpoch { get; set; }
