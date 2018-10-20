@@ -31,7 +31,7 @@ namespace Api.Tests.Weather
             var (apiuxClient, mockHttp) = Factory();
             const int zipCode = 57105;
             const double fakeTemp = 70.5;
-            var response = new ApiuxWeatherResponse
+            var response = new ApiuxWeatherCurrentResponse
             {
                 Current = new Current
                 {
@@ -56,7 +56,7 @@ namespace Api.Tests.Weather
             var (apiuxClient, mockHttp) = Factory();
             const int zipCode = 57105;
             const double fakeTemp = 70.5;
-            var response = new ApiuxWeatherResponse
+            var response = new ApiuxWeatherCurrentResponse
             {
                 Current = new Current
                 {

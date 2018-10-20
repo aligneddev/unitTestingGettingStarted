@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Api.Tests.Weather
 {
-
     // use https://github.com/richardszalay/mockhttp instead
     /// <summary>
     /// Mock the http client from https://github.com/dotnet/corefx/issues/1624#issuecomment-100755941

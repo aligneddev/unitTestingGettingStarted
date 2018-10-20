@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 using System.Threading.Tasks;
 
 namespace Api.Tests.Weather
@@ -17,20 +18,20 @@ namespace Api.Tests.Weather
         }
 
         [TestMethod]
-        public async Task WeatherController_GetTemp_NoZipCode_Returns400()
+        public async Task WeatherController_GetCurrentTemp_NoZipCode_Returns400()
         {
             // Arrange
             var (weatherController, getWeatherHttpClient) = Factory();
 
             // Act
-            var result = await weatherController.GetTempForZipAsync(0);
+            var result = await weatherController.GetCurrentTempForZipAsync(0);
 
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
         }
 
         [TestMethod]
-        public async Task WeatherController_GetTemp_ZipCode_CallsProviderWithZipCode()
+        public async Task WeatherController_GetCurrentTemp_ZipCode_CallsProviderWithZipCode()
         {
             /**
              * Given an API call
@@ -47,7 +48,78 @@ namespace Api.Tests.Weather
                 .ReturnsAsync(fakeTemp);
 
             // Act
-            var response = await weatherController.GetTempForZipAsync(zipCode);
+            var response = await weatherController.GetCurrentTempForZipAsync(zipCode);
+
+            // Assert
+            Assert.AreEqual(fakeTemp, (response.Result as OkObjectResult).Value);
+        }
+
+        [TestMethod]
+        public async Task WeatherController_GetTemp_NoZipCode_Returns400()
+        {
+            // Arrange
+            var (weatherController, getWeatherHttpClient) = Factory();
+
+            // Act
+            var result = await weatherController.GetCurrentTempForZipAsync(0);
+
+            // Assert
+            Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
+        }
+
+        [TestMethod]
+        public async Task WeatherController_GetPastTemp_NoZipCode_Returns400()
+        {
+            // Arrange
+            var (weatherController, getWeatherHttpClient) = Factory();
+
+            // Act
+            var result = await weatherController.GetPastTempForZipAsync(0, string.Empty);
+
+            // Assert
+            Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
+        }
+
+        [TestMethod]
+        public async Task WeatherController_GetPastTemp_NoDateTime_Returns400()
+        {
+            // Arrange
+            var (weatherController, getWeatherHttpClient) = Factory();
+
+            // Act
+            var result = await weatherController.GetPastTempForZipAsync(59785, string.Empty);
+
+            // Assert
+            Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
+        }
+
+        [TestMethod]
+        public async Task WeatherController_GetPastTemp_ZipCodeAndDate_CallsProviderWithZipCodeAndDate()
+        {
+            /**
+             * Given an API call
+            * When asking for past temp
+            * Then it calls the weather Api with the correct zip code and date time
+            */
+            // Arrange
+            var zipCode = 57105;
+            var date = DateTime.Now;
+            var (weatherController, getWeatherHttpClient) = Factory();
+
+            // fake the return from weather provider with MOQ
+            var fakeTemp = 72.6;
+            var response = new ApiuxWeatherCurrentResponse
+            {
+                Current = new Current
+                {
+                    TempF = fakeTemp
+                }
+            };
+            getWeatherHttpClient.Setup(wp => wp.GetPastWeather(zipCode, date))
+                .ReturnsAsync(response);
+
+            // Act
+            var response = await weatherController.GetPastTempForZipAsync(zipCode, date);
 
             // Assert
             Assert.AreEqual(fakeTemp, (response.Result as OkObjectResult).Value);

@@ -4,7 +4,7 @@ using Newtonsoft.Json.Converters;
 
 namespace Api.Weather
 {
-    public partial class ApiuxWeatherResponse
+    public partial class ApiuxWeatherCurrentResponse
     {
         [JsonProperty("location")]
         public Location Location { get; set; }
@@ -115,14 +115,14 @@ namespace Api.Weather
         public string Localtime { get; set; }
     }
 
-    public partial class ApiuxWeatherResponse
+    public partial class ApiuxWeatherCurrentResponse
     {
-        public static ApiuxWeatherResponse FromJson(string json) => JsonConvert.DeserializeObject<ApiuxWeatherResponse>(json);
+        public static ApiuxWeatherCurrentResponse FromJson(string json) => JsonConvert.DeserializeObject<ApiuxWeatherCurrentResponse>(json);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this ApiuxWeatherResponse self) => JsonConvert.SerializeObject(self);
+        public static string ToJson(this ApiuxWeatherCurrentResponse self) => JsonConvert.SerializeObject(self);
     }
 
     internal static class Converter
