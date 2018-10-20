@@ -15,7 +15,7 @@ namespace Api.Weather
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<int>> CurrentTemp([FromQuery(Name = "zipcode")] int zipCode)
+        public async Task<ActionResult<double>> CurrentTemp([FromQuery(Name = "zipcode")] int zipCode)
         {
             if (zipCode == 0)
             {
