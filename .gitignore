@@ -254,3 +254,16 @@ _Pvt_Extensions
 
 
 source/api/obj/**/*.*
+codealike.json
+/source/.vs/BikeTracking/lut
+/source/.vs/BikeTracking/v15/Server/sqlite3
+/source/api/.vs/api/DesignTimeBuild
+/source/api/.vs/api/v15/Server/sqlite3
+/source/.vs/BikeTracking/DesignTimeBuild
+/source/api/bin/Debug/netcoreapp2.1
+/source/api/obj/Debug/netcoreapp2.1
+/source/api.tests/bin/Debug/netcoreapp2.1
+/source/api.tests/obj/Debug/netcoreapp2.1
+/source/api.tests/obj
+/source/web.tests/obj
+/source/web.tests/bin/Debug/netcoreapp2.1

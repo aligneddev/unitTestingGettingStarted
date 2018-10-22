@@ -1,4 +1,4 @@
-﻿<template>
+<template>
     <div class="main-nav">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <button class="navbar-toggler" type="button" @click="toggleCollapsed">
@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <router-link class="navbar-brand" to="/"><icon :icon="['fab', 'microsoft']"/> ASP.NET Core with Vue.js 2</router-link>
+            <router-link class="navbar-brand" to="/"><icon :icon="['fab', 'microsoft']"/> Bike Tracking</router-link>
 
             <transition name="slide">
                 <div :class="'collapse navbar-collapse' + (!collapsed ? ' show':'')" v-show="!collapsed">

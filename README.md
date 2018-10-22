@@ -16,6 +16,7 @@ Master branch is the up-to-date version.
 * in the source/web/web.tests directory `dotnet new mstest -n Web.Tests`
 * in the source/api directory `dotnet new webapi -n Api`
 * in the source/api/api.tests directory `dotnet new mstest -n Api.Tests`
+* run `npm run dev` in source/web
 
 ## Tech Used
 
@@ -28,6 +29,7 @@ Master branch is the up-to-date version.
 * master - has the latest running code
 * emptyStart - after running the commands above with a few tweaks
 * apiHttpCall - creating the API tests, merged to master
+* inMemoryDatabase - EF using inMemoryDatabase for tests
 
 ## "Business" Goals
 
