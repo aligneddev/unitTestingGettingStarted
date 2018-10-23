@@ -28,8 +28,9 @@ Master branch is the up-to-date version.
 
 * master - has the latest running code
 * emptyStart - after running the commands above with a few tweaks
-* apiHttpCall - creating the API tests, merged to master
+* apiHttpCall - creating the API tests, merged to master with PR1
 * inMemoryDatabase - EF using inMemoryDatabase for tests
+* presentationStart - emptied out Weather classes and tests with snippet references
 
 ## "Business" Goals
 
@@ -53,12 +54,18 @@ The ride information to save and returns. Mirrors the DB structure with EF Core.
 ### API
 
 > used in my presentation
+Given an API call
+When asking for current temp
+Then it calls the weather Api with the correct zip code
+
+Examples
+57105 | 52
+00000 | 52 // TODO validate zipcodes
 
 -- get current temp to fill in ride info
 Given an API call
 When asking for current temp
 Then it calls the weather Api with the correct zip code
-
 
 Given a new ride is submitted
 When missing values (invalid)
@@ -72,10 +79,11 @@ Then it should persist to the data store with those values
 
 Examples
 
-
 ### Web
 
 ### TypeScript tests
+
+These haven't been implemented yet.
 
 Given the new ride screen
 When missing values (invalid)
