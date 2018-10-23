@@ -27,7 +27,7 @@ namespace Api.Weather
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<ApiuxWeatherCurrent>> PastWeather([FromQuery(Name = "zipcode")] int zipCode, [FromQuery(Name = "dateTime")] string dateTime)
+        public async Task<ActionResult<ApiuxWeatherForecastResponse>> PastWeather([FromQuery(Name = "zipcode")] int zipCode, [FromQuery(Name = "dateTime")] string dateTime)
         {
             if(zipCode == 0)
             {
@@ -40,7 +40,7 @@ namespace Api.Weather
             }
 
             var weather = await weatherHttpClient.GetPastWeatherAsync(zipCode, parsedDateTime);
-            return weather.Current;
+            return weather;
         }
 
     }
