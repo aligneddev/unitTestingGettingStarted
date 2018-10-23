@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Api.Tests.Weather
@@ -31,7 +32,7 @@ namespace Api.Tests.Weather
         }
 
         [TestMethod]
-        public async Task WeatherController_GetCurrentTemp_ZipCode_CallsProviderWithZipCode()
+        public async Task WeatherController_GetCurrentTemp_ZipCode_CallsWithZipCode()
         {
             /**
              * Given an API call
@@ -110,11 +111,21 @@ namespace Api.Tests.Weather
 
             // fake the return from weather provider with MOQ
             var fakeTemp = 72.6;
-            var fakeResponse = new ApiuxWeatherCurrentResponse
+            var fakeResponse = new ApiuxWeatherForecastResponse
             {
-                Current = new ApiuxWeatherCurrent
+                Forecast = new ApiuxWeatherForecast
                 {
-                    TempF = fakeTemp
+                    ForecastDay = new List<ForecastDay> {
+                        new ForecastDay
+                        {
+                            Hour = new List<ForecastHour> {
+                               new ForecastHour
+                               {
+                                   FeelslikeF = fakeTemp
+                               }
+                            }
+                        }
+                    }
                 }
             };
             getWeatherHttpClient.Setup(wp => wp.GetPastWeatherAsync(It.IsAny<int>(), It.IsAny<DateTime>()))
@@ -134,5 +145,7 @@ namespace Api.Tests.Weather
             //var weatherResult = ApiuxWeatherCurrentResponse.FromJson((result.Result as OkObjectResult).Value as string);
             //Assert.AreEqual(fakeResponse.Current.TempF, weatherResult.Current.TempF);
         }
+
+        // TODO add more tests and code if formatting the data response to abstract from Apiux is required
     }
 }
