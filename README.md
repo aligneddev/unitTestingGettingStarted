@@ -25,7 +25,6 @@ I hope to show an example at my presentation and people will walk out thinking "
 ## Branches
 
 * master - has the latest running code
-* emptyStart - after running the commands above with a few tweaks
 * apiHttpCall - creating the API tests, merged to master with PR1
 * inMemoryDatabase - EF using inMemoryDatabase for tests
 * presentationStart - emptied out Weather classes and tests with snippet references
