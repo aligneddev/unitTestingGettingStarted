@@ -1,10 +1,5 @@
 ﻿using Api.Weather;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Api.Tests.Weather
 {
@@ -12,7 +7,7 @@ namespace Api.Tests.Weather
     [TestCategory(TestCategories.WeatherAPI)]
     public class WeatherControllerTests
     {
-        private WeatherController Factory(){
+        private WeatherController Factory() {
             return new WeatherController();
         }
     }
