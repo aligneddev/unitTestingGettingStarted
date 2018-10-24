@@ -7,12 +7,14 @@ namespace Api.Weather
     [Route("api/[controller]")]
     public class WeatherController : Controller
     {
-        private readonly IGetWeatherHttpClient getWeatherHttpClient;
+        public WeatherController() {
 
-        public WeatherController(IGetWeatherHttpClient getWeatherHttpClient)
-        {
-            this.getWeatherHttpClient = getWeatherHttpClient;
         }
+        // private readonly IGetWeatherHttpClient getWeatherHttpClient;
 
+        // public WeatherController(IGetWeatherHttpClient getWeatherHttpClient)
+        // {
+        //     this.getWeatherHttpClient = getWeatherHttpClient;
+        // }
     }
 }

@@ -12,11 +12,8 @@ namespace Api.Tests.Weather
     [TestCategory(TestCategories.WeatherAPI)]
     public class WeatherControllerTests
     {
-        private (WeatherController weatherController, Mock<IGetWeatherHttpClient> getWeatherHttpClient) Factory()
-        {
-            var getWeatherHttpClient = new Mock<IGetWeatherHttpClient>();
-            //return (new WeatherController(getWeatherHttpClient.Object), getWeatherHttpClient);
-            return (new WeatherController(), getWeatherHttpClient);
+        private WeatherController Factory(){
+            return new WeatherController();
         }
     }
 }

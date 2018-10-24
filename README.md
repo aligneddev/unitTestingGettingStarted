@@ -6,8 +6,6 @@ Example code for [my aligneddev.net article](https://www.aligneddev.net/blog/201
 
 I hope to show an example at my presentation and people will walk out thinking "I can do that".
 
-Master branch is the up-to-date version.
-
 ## Getting started - create the projects in master
 
 * Get the [latest Vue template](https://github.com/MarkPieszak/AspNETCore-Vue-starter) before starting.
@@ -118,4 +116,3 @@ Examples
 
 ?? any needed with SPA approach??
 [my article on "classic" MVC testing](https://www.aligneddev.net/blog/2018/unit-test-mvc/)
-

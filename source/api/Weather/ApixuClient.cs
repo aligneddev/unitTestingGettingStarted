@@ -7,8 +7,7 @@ namespace Api.Weather
 {
     public interface IGetWeatherHttpClient
     {
-        //Task<double> GetCurrentTempAsync(int zipCode);
-        //Task<ApiuxWeatherForecastResponse> GetPastWeatherAsync(int zip, DateTime dateTime);
+        Task<double> GetCurrentTempAsync(int zipCode);
     }
 
     public class ApixuClient : IGetWeatherHttpClient
@@ -23,6 +22,11 @@ namespace Api.Weather
               .Accept
               .Add(new MediaTypeWithQualityHeaderValue("application/json"));
             this.httpClient = httpClient;
+        }
+
+        public Task<double> GetCurrentTempAsync(int zipCode)
+        {
+            throw new NotImplementedException();
         }
     }
 }
