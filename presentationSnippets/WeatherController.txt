@@ -6,7 +6,6 @@
             this.weatherHttpClient = weatherHttpClient;
         }
 
-        [HttpGet("[action]")]
         public async Task<ActionResult<double>> CurrentTemp([FromQuery(Name = "zipcode")] int zipCode)
         {
             if (zipCode == 0)
