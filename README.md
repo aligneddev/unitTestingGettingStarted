@@ -1,6 +1,6 @@
 # Getting started with unit testing
 
-Example code for [my aligneddev.net article](https://www.aligneddev.net/blog/2018/getting-started-with-unit-testing/) and [SD Code Camp 2018](https://www.aligneddev.net/blog/2018/getting-started-with-unit-testing-presention-version/).
+Example code for [my aligneddev.net article](https://www.aligneddev.net/blog/2018/getting-started-with-unit-testing-presentation-version/) and [SD Code Camp 2018](https://southdakotacodecamp.com/speakers/kevin-logan/).
 
 ## How do you start writing unit tests?
 
