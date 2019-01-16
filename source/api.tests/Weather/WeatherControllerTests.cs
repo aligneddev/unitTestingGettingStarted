@@ -53,6 +53,9 @@ namespace Api.Tests.Weather
 
             // Assert
             getWeatherHttpClient.Verify(w => w.GetCurrentTempAsync(zipCode), Times.Once);
+
+            // Note this test may not be the most useful, but it helps move us forward with TDD
+            // some may just delete this test or skip writting it
         }
 
         [TestMethod]
