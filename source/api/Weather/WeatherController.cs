@@ -17,31 +17,32 @@ namespace Api.Weather
         [HttpGet("[action]")]
         public async Task<ActionResult<double>> CurrentTemp([FromQuery(Name = "zipcode")] int zipCode)
         {
-            if (zipCode == 0)
-            {
-                return BadRequest($"{nameof(zipCode)} cannot be 0");
-            }
+            return Ok(zipCode);
+            //if (zipCode == 0)
+            //{
+            //    return BadRequest($"{nameof(zipCode)} cannot be 0");
+            //}
 
-            var result = await weatherHttpClient.GetCurrentTempAsync(zipCode);
-            return Ok(result);
+            //var result = await weatherHttpClient.GetCurrentTempAsync(zipCode);
+            //return Ok(result);
         }
 
-        [HttpGet("[action]")]
-        public async Task<ActionResult<ApiuxWeatherForecastResponse>> PastWeather([FromQuery(Name = "zipcode")] int zipCode, [FromQuery(Name = "dateTime")] string dateTime)
-        {
-            if(zipCode == 0)
-            {
-                return BadRequest($"{nameof(zipCode)} cannot be 0");
-            }
+        //[HttpGet("[action]")]
+        //public async Task<ActionResult<ApiuxWeatherForecastResponse>> PastWeather([FromQuery(Name = "zipcode")] int zipCode, [FromQuery(Name = "dateTime")] string dateTime)
+        //{
+        //    if(zipCode == 0)
+        //    {
+        //        return BadRequest($"{nameof(zipCode)} cannot be 0");
+        //    }
 
-            if (string.IsNullOrWhiteSpace(dateTime) || !DateTime.TryParse(dateTime, out var parsedDateTime))
-            {
-                return BadRequest($"{nameof(dateTime)} must be a valid date");
-            }
+        //    if (string.IsNullOrWhiteSpace(dateTime) || !DateTime.TryParse(dateTime, out var parsedDateTime))
+        //    {
+        //        return BadRequest($"{nameof(dateTime)} must be a valid date");
+        //    }
 
-            var weather = await weatherHttpClient.GetPastWeatherAsync(zipCode, parsedDateTime);
-            return weather;
-        }
+        //    var weather = await weatherHttpClient.GetPastWeatherAsync(zipCode, parsedDateTime);
+        //    return weather;
+        //}
 
     }
 }
