@@ -17,11 +17,12 @@ namespace Api.Weather
         [HttpGet("[action]")]
         public async Task<ActionResult<double>> CurrentTemp([FromQuery(Name = "zipcode")] int zipCode)
         {
+            if (zipCode == 0)
+            {
+                return BadRequest($"{nameof(zipCode)} cannot be 0");
+            }
+
             return Ok(zipCode);
-            //if (zipCode == 0)
-            //{
-            //    return BadRequest($"{nameof(zipCode)} cannot be 0");
-            //}
 
             //var result = await weatherHttpClient.GetCurrentTempAsync(zipCode);
             //return Ok(result);
