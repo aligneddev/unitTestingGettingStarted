@@ -22,21 +22,62 @@ namespace Api.Tests.Weather
             //Given an API call
             //When asking for current temp and no zip code is given
             //Then returns a 400
+            Assert.Inconclusive();
         }
-
 
         //[TestMethod]
         //public async Task WeatherController_GetCurrentTemp_ZipCode_CallsWithZipCode()
         //{
-        //Assert.Inconclusive();
+        //    // Given an API call
+        //    // When asking for current temp
+        //    // Then it calls the weather Api with the correct zip code 
+        //    Assert.Inconclusive();
         //}
 
-        #region completed tests
+        #region first tests
         /*
 
         [TestMethod]
         public async Task WeatherController_GetCurrentTemp_NoZipCode_Returns400()
         {
+            // Arrange
+            var (weatherController, getWeatherHttpClient) = Factory();
+
+            // Act
+            var result = await weatherController.CurrentTemp(0);
+
+            // Assert
+            Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
+        }
+               
+        [TestMethod]
+        [DataRow(0)]
+        [DataRow(-57105)]
+        [DataRow(12)]
+        [DataRow(1921393)]
+        public async Task WeatherController_GetCurrentTemp_NoOrBadZipCode_Returns400(int zipCode)
+        {
+            //Given an API call
+            //When asking for current temp and no zip code is given
+            //Then returns a 400
+            // Arrange
+            var (weatherController, getWeatherHttpClient) = Factory();
+
+            // Act
+            var result = await weatherController.CurrentTemp(zipCode);
+
+            // Assert
+            Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
+        }
+
+        
+
+        [TestMethod]
+        public async Task WeatherController_GetCurrentTemp_NoOrBadZipCode_Returns400()
+        {
+            //Given an API call
+            //When asking for current temp and no zip code is given
+            //Then returns a 400
             // Arrange
             var (weatherController, getWeatherHttpClient) = Factory();
 
@@ -73,7 +114,10 @@ namespace Api.Tests.Weather
             // Note this test may not be the most useful, but it helps move us forward with TDD
             // some may just delete this test or skip writting it
         }
-
+        */
+        #endregion
+        #region completed tests
+        /*
         [TestMethod]
         public async Task WeatherController_GetTemp_NoZipCode_Returns400()
         {

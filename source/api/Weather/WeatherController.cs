@@ -15,14 +15,23 @@ namespace Api.Weather
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<double>> CurrentTemp([FromQuery(Name = "zipcode")] int zipCode)
+        public async Task<ActionResult<double>> CurrentTemp([FromQuery] int zipCode)
         {
-            if (zipCode == 0)
-            {
-                return BadRequest($"{nameof(zipCode)} cannot be 0");
-            }
+            // starting code
+            //if (zipCode == 0)
+            //{
+            //    return BadRequest($"{nameof(zipCode)} is not valid");
+            //}
 
             return Ok(zipCode);
+
+
+            // final product
+            // http://structnet.com/instructions/zip_min_max_by_state.html
+            //if (zipCode <= 1000 || zipCode > 99999)
+            //{
+            //    return BadRequest($"{nameof(zipCode)} cannot be 0");
+            //}
 
             //var result = await weatherHttpClient.GetCurrentTempAsync(zipCode);
             //return Ok(result);
