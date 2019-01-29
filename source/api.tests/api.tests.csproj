@@ -8,6 +8,7 @@
     <RootNamespace>API.Tests</RootNamespace>
 
     <AssemblyName>API.Tests</AssemblyName>
+    <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
   <ItemGroup>
