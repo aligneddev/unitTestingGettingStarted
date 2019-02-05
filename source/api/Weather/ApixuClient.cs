@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Api.Exceptions;
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -27,7 +28,18 @@ namespace Api.Weather
 
         public async Task<double> GetCurrentTempAsync(int zipCode)
         {
-            var response = await httpClient.GetStringAsync($"current.json?key={apiKey}&q={zipCode}");
+            string response = string.Empty;
+            try
+            {
+                response = await httpClient.GetStringAsync($"current.json?key={apiKey}&q={zipCode}");
+            }
+            catch (HttpRequestException)
+            {
+               // for ApixuClientTests_GetTemp_GivenAZipCode_NotFound_ThrowsException discussion
+                  // TODO check the body of the exception
+                  throw new NotFoundException($"{zipCode} didn't work");
+            }
+
             var weather = ApiuxWeatherCurrentResponse.FromJson(response);
             return weather.Current.TempF;
         }

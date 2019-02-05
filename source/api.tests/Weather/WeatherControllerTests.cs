@@ -72,6 +72,24 @@ namespace Api.Tests.Weather
         }
 
         [TestMethod]
+        public async Task WeatherController_GetCurrentTemp_ValidZipCode_ReturnsTheTemp()
+        {
+            // Arrange
+            var zipCode = 57105;
+            var (weatherController, getWeatherHttpClient) = Factory();
+            var fakeTemp = 72.6;
+            getWeatherHttpClient.Setup(wp => wp.GetCurrentTempAsync(zipCode))
+               .ReturnsAsync(fakeTemp);
+
+            // Act
+            var result = await weatherController.CurrentTemp(zipCode);
+
+            // Assert
+            Assert.AreEqual(200, (result.Result as OkObjectResult).StatusCode);
+            Assert.AreEqual(fakeTemp, (result.Result as OkObjectResult).Value);
+        }
+
+        [TestMethod]
         public async Task WeatherController_GetPastTemp_NoZipCode_Returns400()
         {
             // Arrange
