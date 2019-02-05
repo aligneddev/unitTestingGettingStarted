@@ -21,8 +21,6 @@ namespace Api.Tests.Weather
         }
 
 
-
-
         //[TestMethod]
         //public async Task ApixuClientTests_GetTemp_GivenAZipCode_ReturnsTemp()
         //{
@@ -49,6 +47,32 @@ namespace Api.Tests.Weather
         //}
 
         //[TestMethod]
+        //public async Task ApixuClientTests_GetTemp_GivenAZipCode_NotFound_ThrowsException()
+        //{
+        //      // how do we handle error states outside our control?
+        //    // Arrange
+        //    var (apiuxClient, mockHttp) = Factory();
+        //    const int zipCode = 57105;
+        //    const double fakeTemp = 70.5;
+        //    var response = new ApiuxWeatherCurrentResponse
+        //    {
+        //        Current = new ApiuxWeatherCurrent
+        //        {
+        //            TempF = fakeTemp
+        //        }
+        //    };
+        //    var requestUri = $"https://api.apixu.com/v1/current.json?key={ApixuClient.apiKey}&q={zipCode}";
+        //    var request = mockHttp.When(requestUri)
+        //            .Respond(HttpStatusCode.NotFound);
+
+        //    // Act and Assert
+        //    await Assert.ThrowsExceptionAsync<NotFoundException>(async () =>
+        //    {
+        //        await apiuxClient.GetCurrentTempAsync(zipCode);
+        //    });
+        //}
+
+        //[TestMethod]
         //public async Task ApixuClientTests_GetTemp_GivenAZipCode_UsesThatZipCode()
         //{
         //    // Arrange
@@ -66,7 +90,7 @@ namespace Api.Tests.Weather
         //    var request = mockHttp.When(requestUri)
         //            .Respond("application/json", Serialize.ToJson(response));
 
-            
+
         //    // Act
         //    var result = await apiuxClient.GetCurrentTempAsync(zipCode);
 
