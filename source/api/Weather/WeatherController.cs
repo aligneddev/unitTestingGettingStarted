@@ -1,5 +1,7 @@
+using Api.Core.Weather;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Api.Weather
@@ -27,7 +29,7 @@ namespace Api.Weather
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<ApiuxWeatherForecastResponse>> PastWeather([FromQuery(Name = "zipcode")] int zipCode, [FromQuery(Name = "dateTime")] string dateTime)
+        public async Task<ActionResult<ApiuxWeatherForecastResponse>> PastWeather([FromQuery] int zipCode, [FromQuery] string dateTime)
         {
             if(zipCode == 0)
             {
@@ -43,5 +45,38 @@ namespace Api.Weather
             return weather;
         }
 
+        [HttpGet("[action]")]
+        public async Task<ActionResult<IEnumerable<HistoricalData>>> HistoricalData([FromQuery] int zipCode, [FromQuery] string dateTime)
+        {
+            var data = new List<HistoricalData>
+            {
+                new HistoricalData
+                {
+                    DateTime = DateTime.Now.AddYears(-12),
+                    ZipCode = "57105",
+                    TempF = 30.0
+                },
+                new HistoricalData
+                {
+                    DateTime = DateTime.Now.AddYears(-1),
+                    ZipCode = "57105",
+                    TempF = 15.0
+                },
+                new HistoricalData
+                {
+                    DateTime = DateTime.Now.AddYears(-1),
+                    ZipCode = "57105",
+                    TempF = 20.0
+                },
+                new HistoricalData
+                {
+                    DateTime = DateTime.Now,
+                    ZipCode = "57105",
+                    TempF = -15.0
+                }
+            };
+
+            return Ok(data);
+        }
     }
 }
