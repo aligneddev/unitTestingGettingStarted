@@ -45,6 +45,7 @@ namespace Api.Weather
             return weather;
         }
 
+        [HttpGet("[action]")]
         public async Task<ActionResult<IEnumerable<HistoricalData>>> HistoricalData([FromQuery] int zipCode, [FromQuery] string dateTime)
         {
             var data = new List<HistoricalData>
