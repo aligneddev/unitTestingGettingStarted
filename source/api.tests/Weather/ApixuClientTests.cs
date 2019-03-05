@@ -1,4 +1,5 @@
 ﻿using Api.Exceptions;
+using Api.Tests.Core;
 using Api.Weather;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

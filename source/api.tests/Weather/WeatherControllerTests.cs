@@ -1,4 +1,5 @@
-﻿using Api.Weather;
+﻿using Api.Tests.Core;
+using Api.Weather;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
