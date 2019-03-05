@@ -15,7 +15,7 @@ namespace Api.Integration.Tests
 {
     // I put this together in about an hour and a half following https://fullstackmark.com/post/20/painless-integration-testing-with-aspnet-core-web-api
     // I need to do some more researching, thinking and write up an article on when to use these tests vs unit tests (like the ones I have already)
-
+    // I'd also like to get this working in MSTest so I can work where I'm more familiar, but XUnit works very well
     public class WeatherIntegrationTests : IClassFixture<BikeTrackingApiWebApplicationFactory<Startup>>
     {
         private readonly HttpClient _client;
