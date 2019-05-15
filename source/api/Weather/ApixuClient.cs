@@ -28,6 +28,7 @@ namespace Api.Weather
 
         public async Task<double> GetCurrentTempAsync(int zipCode)
         {
+            // suggestion is to make zipCode into a string and make it postal code instead
             string response = string.Empty;
             //try
             //{
