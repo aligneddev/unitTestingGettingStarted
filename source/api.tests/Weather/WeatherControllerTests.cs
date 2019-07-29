@@ -12,6 +12,9 @@ namespace Api.Tests.Weather
     {
         private (WeatherController weatherController, Mock<IGetWeatherHttpClient> getWeatherHttpClient) Factory()
         {
+            // an alternative to returning the tuple, is to have private properties on this class for the injected classes
+            // this is useful if you're class/unit under test has too many dependencies
+            // which means you should probably refactor that class to separate out concerns
             var getWeatherHttpClient = new Mock<IGetWeatherHttpClient>();
             return (new WeatherController(getWeatherHttpClient.Object), getWeatherHttpClient);
         }
