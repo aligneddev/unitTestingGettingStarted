@@ -30,7 +30,9 @@ namespace Api.Tests.Weather
 
         #region first tests
         /*
-
+        // let's start with the not allowed, those are easy to think of 
+        // (work as a team with QA to come up with these before you start coding
+        //  at least before you consider your work as done)
         [TestMethod]
         public async Task WeatherController_GetCurrentTemp_NoZipCode_Returns400()
         {
