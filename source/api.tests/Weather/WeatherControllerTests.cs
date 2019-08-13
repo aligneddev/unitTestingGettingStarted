@@ -64,7 +64,7 @@ namespace Api.Tests.Weather
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
         }
                
-        // now, let's learn how to use DataRow 
+        // now, let's learn how to use DataRow to get more coverage
         // and replace WeatherController_GetCurrentTemp_NoOrBadZipCode_Returns400
         [TestMethod]
         [DataRow(0)]
@@ -86,6 +86,7 @@ namespace Api.Tests.Weather
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
         }
 
+        // this shows how to setup the stub and fake the return from weather provider
         [TestMethod]
         public async Task WeatherController_GetCurrentTemp_ValidZipCode_CallsWithZipCode()
         {
@@ -112,7 +113,7 @@ namespace Api.Tests.Weather
             // some may just delete this test or skip writting it
         }       
 
-
+        // test the happy path
         [TestMethod]
         public async Task WeatherController_GetCurrentTemp_ValidZipCode_ReturnsTheTemp()
         {
@@ -131,6 +132,8 @@ namespace Api.Tests.Weather
             Assert.AreEqual(200, (result.Result as OkObjectResult).StatusCode);
             Assert.AreEqual(fakeTemp, (result.Result as OkObjectResult).Value);
         }
+
+        // more tests could explore exception handling
         */
         #endregion
         #region completed tests
