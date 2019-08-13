@@ -25,17 +25,8 @@ namespace Api.Tests.Weather
             //Given an API call
             //When asking for current temp and no zip code is given
             //Then returns a 400
-            Assert.Inconclusive();
+            Assert.Fail();
         }
-
-        //[TestMethod]
-        //public async Task WeatherController_GetCurrentTemp_ZipCode_CallsWithZipCode()
-        //{
-        //    // Given an API call
-        //    // When asking for current temp
-        //    // Then it calls the weather Api with the correct zip code 
-        //    Assert.Inconclusive();
-        //}
 
         #region first tests
         /*
@@ -45,6 +36,8 @@ namespace Api.Tests.Weather
         {
             // Arrange
             var (weatherController, getWeatherHttpClient) = Factory();
+
+            // we won't get to the client call, so no stubs setup needed
 
             // Act
             var result = await weatherController.CurrentTemp(0);
@@ -69,7 +62,8 @@ namespace Api.Tests.Weather
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
         }
                
-        // replaces WeatherController_GetCurrentTemp_NoOrBadZipCode_Returns400
+        // now, let's learn how to use DataRow 
+        // and replace WeatherController_GetCurrentTemp_NoOrBadZipCode_Returns400
         [TestMethod]
         [DataRow(0)]
         [DataRow(-57105)]
@@ -93,16 +87,15 @@ namespace Api.Tests.Weather
         [TestMethod]
         public async Task WeatherController_GetCurrentTemp_ValidZipCode_CallsWithZipCode()
         {
-            ///
-             // Given an API call
-             // When asking for current temp
-             // Then it calls the weather Api with the correct zip code 
-             ///
+            // Given an API call
+            // When asking for current temp
+            // Then it calls the weather Api with the correct zip code 
+            
             // Arrange
             var zipCode = 57105;
             var (weatherController, getWeatherHttpClient) = Factory();
 
-            // fake the return from weather provider with MOQ
+            // setup the stub and fake the return from weather provider with MOQ
             var fakeTemp = 72.6;
             getWeatherHttpClient.Setup(wp => wp.GetCurrentTempAsync(zipCode))
                 .ReturnsAsync(fakeTemp);
@@ -113,7 +106,7 @@ namespace Api.Tests.Weather
             // Assert
             getWeatherHttpClient.Verify(w => w.GetCurrentTempAsync(zipCode), Times.Once);
 
-            // Note this test may not be the most useful, but it helps move us forward with TDD
+            // Note: this test may not be the most useful, but it helps move us forward with TDD
             // some may just delete this test or skip writting it
         }       
 
@@ -121,7 +114,7 @@ namespace Api.Tests.Weather
         [TestMethod]
         public async Task WeatherController_GetCurrentTemp_ValidZipCode_ReturnsTheTemp()
         {
-        // first make/leave WeatherController return zipcode in result
+            // first make/leave WeatherController return zipcode in result
             // Arrange
             var zipCode = 57105;
             var (weatherController, getWeatherHttpClient) = Factory();
