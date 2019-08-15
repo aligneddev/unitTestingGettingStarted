@@ -25,12 +25,14 @@ namespace Api.Tests.Weather
             //Given an API call
             //When asking for current temp and no zip code is given
             //Then returns a 400
+
+
             Assert.Fail();
         }
 
         #region first tests
         /*
-        // let's start with the not allowed, those are easy to think of 
+        // let's start with the not allowed use case, those are easy to think of 
         // (work as a team with QA to come up with these before you start coding
         //  at least before you consider your work as done)
         [TestMethod]
