@@ -22,11 +22,9 @@ namespace Api.Tests.Weather
         [TestMethod]
         public async Task WeatherController_GetCurrentTemp_NoZipCode_Returns400()
         {
-            //Given an API call
-            //When asking for current temp and no zip code is given
-            //Then returns a 400
-
-
+            // Given an API call
+            // When asking for current temp and no zip code is given
+            // Then returns a 400
             Assert.Fail();
         }
 
@@ -49,7 +47,8 @@ namespace Api.Tests.Weather
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
         }        
-
+        */
+        /*
         [TestMethod]
         public async Task WeatherController_GetCurrentTemp_NoOrBadZipCode_Returns400()
         {
@@ -65,7 +64,8 @@ namespace Api.Tests.Weather
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
         }
-               
+         */
+         /*
         // now, let's learn how to use DataRow to get more coverage
         // and replace WeatherController_GetCurrentTemp_NoOrBadZipCode_Returns400
         [TestMethod]
@@ -87,7 +87,8 @@ namespace Api.Tests.Weather
             // Assert
             Assert.AreEqual(400, (result.Result as BadRequestObjectResult).StatusCode);
         }
-
+        */
+        /*
         // this shows how to setup the stub and fake the return from weather provider
         [TestMethod]
         public async Task WeatherController_GetCurrentTemp_ValidZipCode_CallsWithZipCode()
@@ -114,7 +115,8 @@ namespace Api.Tests.Weather
             // Note: this test may not be the most useful, but it helps move us forward with TDD
             // some may just delete this test or skip writting it
         }       
-
+        */
+        /*
         // test the happy path
         [TestMethod]
         public async Task WeatherController_GetCurrentTemp_ValidZipCode_ReturnsTheTemp()
@@ -134,9 +136,9 @@ namespace Api.Tests.Weather
             Assert.AreEqual(200, (result.Result as OkObjectResult).StatusCode);
             Assert.AreEqual(fakeTemp, (result.Result as OkObjectResult).Value);
         }
-
-        // more tests could explore exception handling
         */
+        // more tests could explore exception handling
+        
         #endregion
         #region completed tests
         /*
