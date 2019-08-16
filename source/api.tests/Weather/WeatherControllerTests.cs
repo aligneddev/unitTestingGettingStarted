@@ -20,7 +20,7 @@ namespace Api.Tests.Weather
         }
 
         [TestMethod]
-        public async Task WeatherController_GetCurrentTemp_NoZipCode_Returns400()
+        public async Task WeatherController_CurrentTemp_NoZipCode_Returns400()
         {
             // Given an API call
             // When asking for current temp and no zip code is given
@@ -34,7 +34,7 @@ namespace Api.Tests.Weather
         // (work as a team with QA to come up with these before you start coding
         //  at least before you consider your work as done)
         [TestMethod]
-        public async Task WeatherController_GetCurrentTemp_NoZipCode_Returns400()
+        public async Task WeatherController_CurrentTemp_NoZipCode_Returns400()
         {
             // Arrange
             var (weatherController, getWeatherHttpClient) = Factory();
@@ -50,7 +50,7 @@ namespace Api.Tests.Weather
         */
         /*
         [TestMethod]
-        public async Task WeatherController_GetCurrentTemp_NoOrBadZipCode_Returns400()
+        public async Task WeatherController_CurrentTemp_NoOrBadZipCode_Returns400()
         {
             //Given an API call
             //When asking for current temp and no zip code is given
@@ -67,13 +67,13 @@ namespace Api.Tests.Weather
          */
          /*
         // now, let's learn how to use DataRow to get more coverage
-        // and replace WeatherController_GetCurrentTemp_NoOrBadZipCode_Returns400
+        // and replace WeatherController_CurrentTemp_NoOrBadZipCode_Returns400
         [TestMethod]
         [DataRow(0)]
         [DataRow(-57105)]
         [DataRow(12)]
         [DataRow(1921393)]
-        public async Task WeatherController_GetCurrentTemp_NoOrBadZipCode_Returns400(int zipCode)
+        public async Task WeatherController_CurrentTemp_NoOrBadZipCode_Returns400(int zipCode)
         {
             //Given an API call
             //When asking for current temp and no zip code is given
@@ -91,7 +91,7 @@ namespace Api.Tests.Weather
         /*
         // this shows how to setup the stub and fake the return from weather provider
         [TestMethod]
-        public async Task WeatherController_GetCurrentTemp_ValidZipCode_CallsWithZipCode()
+        public async Task WeatherController_CurrentTemp_ValidZipCode_CallsWithZipCode()
         {
             // Given an API call
             // When asking for current temp
@@ -119,7 +119,7 @@ namespace Api.Tests.Weather
         /*
         // test the happy path
         [TestMethod]
-        public async Task WeatherController_GetCurrentTemp_ValidZipCode_ReturnsTheTemp()
+        public async Task WeatherController_CurrentTemp_ValidZipCode_ReturnsTheTemp()
         {
             // first make/leave WeatherController return zipcode in result
             // Arrange
