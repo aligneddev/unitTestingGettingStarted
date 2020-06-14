@@ -2,31 +2,25 @@
 
 Example code for [my aligneddev.net article](https://www.aligneddev.net/blog/2018/getting-started-with-unit-testing-presentation-version/) and [SD Code Camp 2018](https://southdakotacodecamp.com/speakers/kevin-logan/).
 
+In June 2020, I updated this to [.Net Core 5 preview 5](https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-5.0.100-preview.5-windows-x64-installer).
+
 ## How do you start writing unit tests?
 
 I hope to show an example at my presentation and people will walk out thinking "I can do that".
 
 Master branch is the up-to-date version.
 
-## Getting started - create the projects in master
-
-* Get the [latest Vue template](https://github.com/MarkPieszak/AspNETCore-Vue-starter) before starting.
-* `dotnet new -i aspnetcore-vuejs`
-* in the source/web directory `dotnet new vuejs -n Web`
-* in the source/web/web.tests directory `dotnet new mstest -n Web.Tests`
-* in the source/api directory `dotnet new webapi -n Api`
-* in the source/api/api.tests directory `dotnet new mstest -n Api.Tests`
-* run `npm run dev` in source/web
-
 ## Tech Used
 
-* Asp.Net MVC Core
+* Asp.Net MVC Core 5 preview 4(https://devblogs.microsoft.com/dotnet/announcing-net-5-preview-4-and-our-journey-to-one-net/)
 * EF Core - may just be mocked data for now
-* VueJs
+* [Open API](https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-5.0&tabs=netcore-cli)
+
 
 ## Branches
 
 * master - has the latest running code
+* original - original written in .Net Core 2.2
 * emptyStart - after running the commands above with a few tweaks
 * apiHttpCall - creating the API tests, merged to master
 * inMemoryDatabase - EF using inMemoryDatabase for tests

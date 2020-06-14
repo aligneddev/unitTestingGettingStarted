@@ -1,4 +1,4 @@
-﻿namespace Api.Tests.Core
+namespace Api.Tests.Core
 {
     public static class TestCategories
     {
