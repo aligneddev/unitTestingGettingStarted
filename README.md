@@ -10,13 +10,11 @@ I hope to show an example at my presentation and people will walk out thinking "
 
 Master branch is the up-to-date version.
 
-## Getting started - create the projects in master
-
-
 ## Tech Used
 
-* Asp.Net MVC Core
+* Asp.Net MVC Core 5 preview 4(https://devblogs.microsoft.com/dotnet/announcing-net-5-preview-4-and-our-journey-to-one-net/)
 * EF Core - may just be mocked data for now
+* [Open API](https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-5.0&tabs=netcore-cli)
 
 
 ## Branches

@@ -50,8 +50,10 @@ namespace Api
                         Url = new Uri("https://example.com/license"),
                     }
                 });
-
             });
+
+
+            services.AddHttpClient<Weather.IGetWeatherHttpClient, Weather.WeatherStackClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
