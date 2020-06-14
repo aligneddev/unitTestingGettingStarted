@@ -27,22 +27,22 @@ namespace Api.Weather
             return Ok(result);
         }
 
-        //[HttpGet("[action]")]
-        //public async Task<ActionResult<WeatherForecastResponse>> PastWeather([FromQuery] int zipCode, [FromQuery] string dateTime)
-        //{
-        //    if(zipCode == 0)
-        //    {
-        //        return BadRequest($"{nameof(zipCode)} cannot be 0");
-        //    }
+        [HttpGet("[action]")]
+        public async Task<ActionResult<WeatherMainResponse>> PastWeather([FromQuery] int zipCode, [FromQuery] string dateTime)
+        {
+            if (zipCode == 0)
+            {
+                return BadRequest($"{nameof(zipCode)} cannot be 0");
+            }
 
-        //    if (string.IsNullOrWhiteSpace(dateTime) || !DateTime.TryParse(dateTime, out var parsedDateTime))
-        //    {
-        //        return BadRequest($"{nameof(dateTime)} must be a valid date");
-        //    }
+            if (string.IsNullOrWhiteSpace(dateTime) || !DateTime.TryParse(dateTime, out var parsedDateTime))
+            {
+                return BadRequest($"{nameof(dateTime)} must be a valid date");
+            }
 
-        //    var weather = await weatherHttpClient.GetPastWeatherAsync(zipCode, parsedDateTime);
-        //    return weather;
-        //}
+            var weather = await weatherHttpClient.GetPastWeatherAsync(zipCode, parsedDateTime);
+            return weather;
+        }
 
         [HttpGet("[action]")]
         public async Task<ActionResult<IEnumerable<HistoricalData>>> HistoricalData([FromQuery] int zipCode, [FromQuery] string dateTime)

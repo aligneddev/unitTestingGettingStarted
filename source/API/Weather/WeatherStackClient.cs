@@ -9,7 +9,7 @@ namespace Api.Weather
     public interface IGetWeatherHttpClient
     {
         Task<double> GetCurrentTempAsync(int zipCode);
-        //Task<WeatherForecastResponse> GetPastWeatherAsync(int zip, DateTime dateTime);
+        Task<WeatherMainResponse> GetPastWeatherAsync(int zipCode, DateTime dateTime);
     }
 
     public class WeatherStackClient : IGetWeatherHttpClient
@@ -48,24 +48,26 @@ namespace Api.Weather
 
         // http://api.weatherstack.com/historical?access_key={key}&query=New%20York&historical_date=2015-01-21&hourly=1
         // your current subscription plan does not support historical weather data. Please upgrade your account to use this feature."}}
-        //public async Task<WeatherForecastResponse> GetPastWeatherAsync(int zipCode, DateTime dateTime)
-        //{
-        //    // our current subscription plan does not support historical weather data. Please upgrade your account to use this feature."}}
-        //    // won't work
-        //    // http://api.weatherstack.com/historical?access_key=&query=New%20York&historical_date=2015-01-21&hourly=1
-        //    var response = await httpClient.GetStringAsync($"history.json?key={apiKey}&q={zipCode}&date={dateTime}");
-        //    return WeatherForecastResponse.FromJson(response);
-        //}
+        public async Task<WeatherMainResponse> GetPastWeather_NotTestableAsync(int zipCode, DateTime dateTime)
+        {
+            // why can't we write tests for this?
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = new Uri($"https://api.apixu.com/v1/");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = await httpClient.GetStringAsync($"past.json?key={apiKey}&q={zipCode}&date={dateTime}");
+                return WeatherMainResponse.FromJson(response);
+            }
+        }
 
-        //public async Task<ApiuxWeatherResponse> GetPastWeather_Untestable(int zipCode, DateTime dateTime)
-        //{
-        //    using(var httpClient = new HttpClient())
-        //    {
-        //        httpClient.BaseAddress = new Uri($"https://api.apixu.com/v1/");
-        //        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //        var response = await httpClient.GetStringAsync($"past.json?key={apiKey}&q={zipCode}&date={dateTime}");
-        //        return ApiuxWeatherResponse.FromJson(response);
-        //    }
-        //}
+        public async Task<WeatherMainResponse> GetPastWeatherAsync(int zipCode, DateTime dateTime)
+        {
+            // our current subscription plan does not support historical weather data. Please upgrade your account to use this feature."}}
+            // won't work
+            // http://api.weatherstack.com/historical?access_key=&query=New%20York&historical_date=2015-01-21&hourly=1
+            var response = await httpClient.GetStringAsync($"historical?access_key={apiKey}&type=zipcode&units=f&query={zipCode}&historical_date={dateTime}&hourly=1");
+            return WeatherMainResponse.FromJson(response);
+        }
+
     }
 }

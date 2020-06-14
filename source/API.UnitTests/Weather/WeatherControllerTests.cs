@@ -88,6 +88,7 @@ namespace Api.UnitTests.Weather
             Assert.AreEqual(fakeTemp, (result.Result as OkObjectResult).Value);
         }
 
+        // bring in tests and TDD new method
         //[TestMethod]
         //public async Task WeatherController_GetPastTemp_NoZipCode_Returns400()
         //{
