@@ -36,9 +36,9 @@ namespace Api.Weather
             }
             catch (HttpRequestException)
             {
-               // for ApixuClientTests_GetTemp_GivenAZipCode_NotFound_ThrowsException discussion
-                  // TODO check the body of the exception
-                  throw new NotFoundException($"{zipCode} didn't work");
+                // for ApixuClientTests_GetTemp_GivenAZipCode_NotFound_ThrowsException discussion
+                // TODO check the body of the exception
+                throw new NotFoundException($"{zipCode} didn't work");
             }
 
             var weather = WeatherMainResponse.FromJson(response);
