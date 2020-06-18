@@ -69,6 +69,8 @@ Examples
 
 ### Web
 
+I have Cypress tests, and even Cypress running against Blazor, in [this repo](https://github.com/aligneddev/cypressTesting
+)
 ### TypeScript tests
 
 Given the new ride screen
